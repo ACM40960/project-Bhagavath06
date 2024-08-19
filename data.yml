@@ -1,0 +1,8 @@
+train: train/images
+val: val/images
+
+# Number of classes
+nc: 8
+
+# Class names
+names: ["Car", "Pedestrian", "Cyclist", "Van", "Truck", "Person_sitting", "Tram", "Misc"]
