@@ -172,7 +172,7 @@ python concat.py
 
 ### Test Images
 
-Test images of Faster R-CNN and YOLOv8 showing predicted object bounding box with confidence level and corresponding labels.
+Test images of Faster R-CNN and YOLOv8 showing predicted object bounding box with confidence level and corresponding labels. (Read bounding box image corresponds to Faster R-CNN and the other YOLOv8)
 
 ![Test Image](images/test_image.png)
 ![Test Image 2](images/test_image4.png)
