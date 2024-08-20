@@ -77,20 +77,54 @@ For this project, YOLOv8 is implemented using the Ultralytics framework, which p
 
 ## Directory Structure
 
-- `dataset_object_image_2`: Contains the KITTI dataset training images.
-- `dataset_object_label_2`: Contains the annotations for the KITTI training images.
-- `datasets`: Contains the split datasets (train, val, test) with corresponding images and labels.
-- `images` : Contains images necessary for markdown file.
-- `video` : Contains predicted video files from both the models.
-- `faster_rcnn_checkpoints`: Contains the saved model weights for the best performing Faster R-CNN model.
-- `runs`: Contains the outputs from the YOLOv8 model training, including the best model weights.
-- `faster_rcnn.ipynb`: Jupyter notebook for training and evaluating the Faster R-CNN model.
-- `yolov8.ipynb`: Jupyter notebook for training and evaluating the YOLOv8 model.
-- `model_comparison.ipynb` : Jupyter notebook which compares both the trained model on KITTI dataset.
-- `data.yml`: Configuration file for YOLOv8 training.
-- `yolov8n.pt`: Pre-trained YOLOv8 base model.
+```
+├── dataset_object_image_2  # Contains the KITTI dataset training images
+|   └── ...
+├── dataset_object_label_2  # Contains the annotations for the KITTI training images
+|   └── ...
+├── datasets                # Contains the split datasets (train, val, test) with corresponding images and labels
+│ ├── train
+│ │ ├── images
+│ │ └── labels
+│ ├── val
+│ │ ├── images
+│ │ └── labels
+│ └── test
+├── faster_rcnn_checkpoints # Contains the saved model weights for the best performing Faster R-CNN model
+├── images                  # Contains images necessary for the markdown file
+├── runs                    # Contains the outputs from the YOLOv8 model training, including the best model weights
+│ └── detect
+|   └── predict
+|   └── predict2
+|   └── train
+|   └── train2
+|   └── train3
+|   └── train4
+├── video                   # Contains predicted video files from both the models
+├── LICENCE.txt             # Licence informations
+├── README.md               # Project Informations
+├── concat.py               # File to concat splitted faster rcnn model weights
+├── data.yml                # Configuration file for YOLOv8 training
+├── faster_rcnn.ipynb       # Jupyter notebook for training and evaluating the Faster R-CNN model
+├── model_comparison.ipynb  # Jupyter notebook which compares both the trained models on KITTI dataset
+├── split.py                # File to split faster rcnn trained weights to parts (used for github upload)
+├── yolov8.ipynb            # Jupyter notebook for training and evaluating the YOLOv8 model
+└── yolov8n.pt              # Pre-trained YOLOv8 base model
+```
 
 ## How to Run
+
+### Concatenating Faster R-CNN Model Weights
+
+If you have received the model weights in multiple parts, follow these steps to concatenate them back together:
+
+1. Clone the repository and navigate to the directory.
+2. Open command prompt in the directory.
+3. Run the `concat.py` script to merge the split files back into the original model weights file:
+ 
+```
+python concat.py
+```
 
 ### Faster R-CNN
 
@@ -118,10 +152,21 @@ For this project, YOLOv8 is implemented using the Ultralytics framework, which p
 
 ![metric](images/metric.png)
 
+| **Metric**                          | **Faster R-CNN** | **YOLOv8** |
+|-------------------------------------|------------------|------------|
+| Mean Average Precision (mAP)        | 0.33             | 0.58       |
+| Precision                           | 0.61             | 0.68       |
+| Recall                              | 0.46             | 0.51       |
+| Training Time                       | 37.10 hrs        | 5.90 hrs   |
+| Validation Time                     | 233.89 mins      | 3.16 mins  |
+| Image Inference Time (single)       | 4.96 s           | 0.29 s     |
+| Video Inference Time (30 sec)       | 3715.93 sec      | 278.50 sec |
+
 ### Training and Validation Times
 
 - For both models, training and validation times are calculated to compare efficiency. Faster R-CNN almost took 37.10 hours for completing 4 epochs of training while YOLOv8 model took only 5.90 hours. The former took 3.89 hours (233.89 mins) while YOLOv8 took only 190.83 seconds (3.16 mins) for 4 epochs. Thus Faster R-CNN took way long time than YOLOv8.
 - Inference time on test images and videos is also recorded. The prediction time (including pre-processing, predicting and post-processing) of images for Faster R-CNN is high which is 4.9641 seconds, while YOLOv8 model is 0.2974 seconds only, which can be suitable for real-time application. 
+- However, while YOLOv8 is faster than Faster R-CNN for processing an image and predicting output, its video inference time of 278.50 seconds (4.64 minutes) for a 30 seconds (906 frames) video still fall short of real-time processing requirements which are crucial for applications like autonomous driving.
 
 ## Test Results
 
@@ -130,6 +175,7 @@ For this project, YOLOv8 is implemented using the Ultralytics framework, which p
 Test images of Faster R-CNN and YOLOv8 showing predicted object bounding box with confidence level and corresponding labels.
 
 ![Test Image](images/test_image.png)
+![Test Image 2](images/test_image4.png)
 
 ### Test Videos
 
