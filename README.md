@@ -149,4 +149,4 @@ This project compares the performance of Faster R-CNN and YOLOv8 for object dete
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.txt) file for details.
