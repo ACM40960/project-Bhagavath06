@@ -1,4 +1,4 @@
-# Object Detection of Autonomous Vehicles
+# Object Detection in Autonomous Vehicles
 
 This project focuses on object detection for autonomous driving using the KITTI dataset. Two different models are implemented and compared: Faster R-CNN using PyTorch and YOLOv8 using the Ultralytics framework.
 
@@ -172,7 +172,7 @@ python concat.py
 
 ### Test Images
 
-Test images of Faster R-CNN and YOLOv8 showing predicted object bounding box with confidence level and corresponding labels.
+Test images of Faster R-CNN and YOLOv8 showing predicted object bounding box with confidence level and corresponding labels. (Read bounding box image corresponds to Faster R-CNN and the other YOLOv8)
 
 ![Test Image](images/test_image.png)
 ![Test Image 2](images/test_image4.png)
